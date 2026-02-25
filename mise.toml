@@ -1,2 +1,4 @@
 [tools]
-just = "latest"
+just = "1.46.0"
+pipx = "1.8.0"
+"pipx:mcpm" = "2.13.0" 
