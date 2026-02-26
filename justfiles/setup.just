@@ -4,3 +4,6 @@ setup:
 
 setup-mcp-router:
     @scripts/setup-mcp-router.sh
+
+link-skills:
+    @scripts/link-skills.sh
