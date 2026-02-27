@@ -3,6 +3,12 @@ set -euo pipefail
 
 APP="apps/persona"
 PROFILES_DIR="$APP/profiles"
+LOG="$APP/.dev.log"
+
+# Detect running port from dev log
+PORT=$(grep -oE 'localhost:[0-9]+' "$LOG" 2>/dev/null | head -1 | cut -d: -f2)
+PORT="${PORT:-3000}"
+export BASE_URL="http://localhost:$PORT"
 
 # Find all YAML files
 files=($(find "$PROFILES_DIR" -maxdepth 1 -name '*.yaml' -o -name '*.yml' | sort))

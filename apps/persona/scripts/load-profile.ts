@@ -9,11 +9,12 @@ async function api(path: string, method: string, body?: any) {
     headers: body ? { 'Content-Type': 'application/json' } : undefined,
     body: body ? JSON.stringify(body) : undefined,
   })
-  if (!res.ok && res.status !== 404) {
+  if (!res.ok) {
+    if (res.status === 404) return null
     const text = await res.text()
     throw new Error(`${method} ${path} → ${res.status}: ${text}`)
   }
-  if (res.status === 204 || res.status === 404) return null
+  if (res.status === 204) return null
   return res.json()
 }
 
@@ -48,6 +49,9 @@ async function main() {
     firstName: li.firstName,
     lastName: li.lastName,
   })
+  if (!profile) {
+    throw new Error('POST /api/profile returned 404 — is the server running? (just start)')
+  }
   console.log(`  Created profile: ${profile.id}`)
 
   // Update LinkedIn basic info
