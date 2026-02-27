@@ -11,9 +11,12 @@ start:
 stop:
     scripts/stop.sh {{PID}}
 
+# Restart dev server
+restart: stop start
+
 # Show dev server status
 status:
-    scripts/status.sh {{PID}}
+    scripts/status.sh {{PID}} {{APP}} {{LOG}}
 
 # ── Migration ──────────────────────────────────────────
 # Apply pending migrations (creates new migration if schema changed)

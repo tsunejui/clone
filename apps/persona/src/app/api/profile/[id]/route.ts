@@ -3,15 +3,22 @@ import { NextRequest, NextResponse } from 'next/server'
 
 /**
  * @swagger
- * /api/linkedin/certifications/{id}:
+ * /api/profile/{id}:
  *   patch:
- *     tags: [Certifications]
- *     summary: Update a certification
+ *     tags: [Profile]
+ *     summary: Update profile name
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema: { type: string }
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string }
  *     responses:
  *       200:
  *         description: Updated
@@ -23,7 +30,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   const body = await req.json()
 
   try {
-    const updated = await prisma.certification.update({ where: { id }, data: body })
+    const updated = await prisma.profile.update({ where: { id }, data: body })
     return NextResponse.json(updated)
   } catch {
     return NextResponse.json({ error: 'Not found' }, { status: 404 })
@@ -32,10 +39,10 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
 /**
  * @swagger
- * /api/linkedin/certifications/{id}:
+ * /api/profile/{id}:
  *   delete:
- *     tags: [Certifications]
- *     summary: Delete a certification
+ *     tags: [Profile]
+ *     summary: Delete profile and all associated data
  *     parameters:
  *       - in: path
  *         name: id
@@ -49,7 +56,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
   const { id } = await params
 
   try {
-    await prisma.certification.delete({ where: { id } })
+    await prisma.profile.delete({ where: { id } })
     return new NextResponse(null, { status: 204 })
   } catch {
     return NextResponse.json({ error: 'Not found' }, { status: 404 })

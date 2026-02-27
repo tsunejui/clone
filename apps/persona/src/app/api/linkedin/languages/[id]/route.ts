@@ -4,6 +4,35 @@ import { NextRequest, NextResponse } from 'next/server'
 /**
  * @swagger
  * /api/linkedin/languages/{id}:
+ *   patch:
+ *     tags: [Languages]
+ *     summary: Update a language
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200:
+ *         description: Updated
+ *       404:
+ *         description: Not found
+ */
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const body = await req.json()
+
+  try {
+    const updated = await prisma.language.update({ where: { id }, data: body })
+    return NextResponse.json(updated)
+  } catch {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  }
+}
+
+/**
+ * @swagger
+ * /api/linkedin/languages/{id}:
  *   delete:
  *     tags: [Languages]
  *     summary: Delete a language

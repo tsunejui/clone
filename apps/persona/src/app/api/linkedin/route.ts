@@ -30,7 +30,7 @@ export async function GET() {
   })
 
   if (!profile?.linkedin) {
-    return NextResponse.json({ error: 'No profile found. Run: just persona-db-seed' }, { status: 404 })
+    return NextResponse.json({ error: 'No profile found. Run: just db-seed' }, { status: 404 })
   }
 
   return NextResponse.json(profile.linkedin)
