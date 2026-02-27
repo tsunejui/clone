@@ -2,3 +2,10 @@
 .DS_Store
 *.log
 .env
+
+# persona app
+apps/persona/node_modules/
+apps/persona/.next/
+apps/persona/prisma/*.db
+apps/persona/prisma/*.db-journal
+

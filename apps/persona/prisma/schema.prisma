@@ -1,0 +1,124 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+  id        String   @id @default(cuid())
+  name      String   @default("Default Persona")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  linkedin LinkedIn?
+}
+
+model LinkedIn {
+  id          String  @id @default(cuid())
+  profileId   String  @unique
+  profile     Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  firstName   String
+  lastName    String
+  headline    String
+  location    String
+  country     String
+  summary     String
+  profileUrl  String
+  avatarUrl   String?
+  connections Int     @default(0)
+  followers   Int     @default(0)
+  email       String?
+  phone       String?
+  website     String?
+
+  experiences    Experience[]
+  educations     Education[]
+  skills         Skill[]
+  certifications Certification[]
+  languages      Language[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  linkedInId  String
+  linkedIn    LinkedIn @relation(fields: [linkedInId], references: [id], onDelete: Cascade)
+
+  company     String
+  title       String
+  location    String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  description String?
+  order       Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id         String   @id @default(cuid())
+  linkedInId String
+  linkedIn   LinkedIn @relation(fields: [linkedInId], references: [id], onDelete: Cascade)
+
+  school      String
+  degree      String
+  field       String
+  startYear   Int
+  endYear     Int?
+  current     Boolean @default(false)
+  description String?
+  grade       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id         String   @id @default(cuid())
+  linkedInId String
+  linkedIn   LinkedIn @relation(fields: [linkedInId], references: [id], onDelete: Cascade)
+
+  name         String
+  category     String?
+  endorsements Int    @default(0)
+  order        Int    @default(0)
+
+  createdAt DateTime @default(now())
+}
+
+model Certification {
+  id         String   @id @default(cuid())
+  linkedInId String
+  linkedIn   LinkedIn @relation(fields: [linkedInId], references: [id], onDelete: Cascade)
+
+  name          String
+  issuer        String
+  issueDate     DateTime
+  expiryDate    DateTime?
+  credentialId  String?
+  credentialUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Language {
+  id         String   @id @default(cuid())
+  linkedInId String
+  linkedIn   LinkedIn @relation(fields: [linkedInId], references: [id], onDelete: Cascade)
+
+  name        String
+  // NATIVE | FULL_PROFESSIONAL | PROFESSIONAL | LIMITED_WORKING | ELEMENTARY
+  proficiency String
+  order       Int    @default(0)
+
+  createdAt DateTime @default(now())
+}
