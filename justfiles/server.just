@@ -35,3 +35,20 @@ migrate-reset:
 # Seed DB (default scenario: tech-engineer)
 db-seed scenario="tech-engineer":
     cd {{APP}} && SEED_SCENARIO={{scenario}} npx tsx prisma/seed.ts
+
+# Delete all data from DB (auto-backups first, keeps schema + migrations)
+db-wipe:
+    scripts/db-wipe.sh {{APP}}
+
+# ── Backup ────────────────────────────────────────────
+# Backup current DB with timestamp
+db-backup:
+    scripts/db-backup.sh {{APP}}
+
+# List all DB backups
+db-backups:
+    @ls -lh {{APP}}/backups/*.db 2>/dev/null || echo "No backups found."
+
+# Restore DB from backup (interactive or specify version like 20260227-120000)
+db-restore version="":
+    scripts/db-restore.sh {{APP}} {{version}}
