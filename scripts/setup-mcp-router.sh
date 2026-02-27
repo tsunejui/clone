@@ -28,7 +28,7 @@ configure_claude() {
     if claude mcp list 2>/dev/null | grep -q "$MCP_NAME"; then
         gum style --foreground 220 "  skip (exists): mcp-router already in Claude Code"
     else
-        claude mcp add "$MCP_NAME" --env MCPR_TOKEN="$token" -- \
+        claude mcp add "$MCP_NAME" --scope user --env MCPR_TOKEN="$token" -- \
             npx -y @mcp_router/cli@0.2.0 connect
         gum style --foreground 212 "  linked: mcp-router → Claude Code"
     fi
@@ -39,7 +39,7 @@ configure_gemini() {
     if gemini mcp list 2>/dev/null | grep -q "$MCP_NAME"; then
         gum style --foreground 220 "  skip (exists): mcp-router already in Gemini"
     else
-        gemini mcp add "$MCP_NAME" -e MCPR_TOKEN="$token" npx -y @mcp_router/cli@0.2.0 connect
+        gemini mcp add "$MCP_NAME" --scope user -e MCPR_TOKEN="$token" npx -y @mcp_router/cli@0.2.0 connect
         gum style --foreground 212 "  linked: mcp-router → Gemini (.gemini/settings.json)"
     fi
 }
