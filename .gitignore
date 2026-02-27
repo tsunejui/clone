@@ -5,6 +5,7 @@
 
 # persona app
 apps/persona/node_modules/
+apps/persona/package-lock.json
 apps/persona/.next/
 apps/persona/prisma/*.db
 apps/persona/prisma/*.db-journal
