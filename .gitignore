@@ -8,4 +8,6 @@ apps/persona/node_modules/
 apps/persona/.next/
 apps/persona/prisma/*.db
 apps/persona/prisma/*.db-journal
+apps/persona/.pid
+apps/persona/.dev.log
 
