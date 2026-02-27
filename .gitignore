@@ -12,4 +12,6 @@ apps/persona/.pid
 apps/persona/.dev.log
 apps/persona/tsconfig.tsbuildinfo
 apps/persona/backups/
+apps/persona/profiles/*
+!apps/persona/profiles/.gitkeep
 

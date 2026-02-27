@@ -18,7 +18,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-react": "^5.18.0"
+    "swagger-ui-react": "^5.18.0",
+    "yaml": "^2.7.0"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"

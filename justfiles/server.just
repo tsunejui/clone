@@ -40,6 +40,10 @@ db-seed scenario="tech-engineer":
 db-wipe:
     scripts/db-wipe.sh {{APP}}
 
+# Import LinkedIn profile from YAML file
+db-import file:
+    cd {{APP}} && npx tsx prisma/import.ts "../../{{file}}"
+
 # ── Backup ────────────────────────────────────────────
 # Backup current DB with timestamp
 db-backup:
