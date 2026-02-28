@@ -63,10 +63,6 @@ Life is full of high-latency, low-reward tasks. Clone fixes this by automating y
 - **Behavioral Mimicry:** Matches your posting frequency, preferred time slots, and topic preferences.
 - **Full Autonomy:** The end goal is zero human intervention — your clone lives your online life for you.
 
-## Architecture
-
-See [`pumls/readme.puml`](pumls/readme.puml) for the full system diagram.
-
 ## Project Structure
 
 ```text
