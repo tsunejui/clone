@@ -93,7 +93,3 @@ mise.toml         # Tool version management
 | LinkedIn | Done | Done | Done | Planned |
 | Twitter  | Planned | — | — | — |
 | Facebook | Planned | — | — | — |
-
-## License
-
-MIT (If this AI makes you more successful than me, I'm too lazy to sue you).
