@@ -1,4 +1,4 @@
-# Clone (I'm too lazy to live, so I wrote an AI to do it for me)
+# Clone
 
 > **WIP**: This project is under active development.
 
