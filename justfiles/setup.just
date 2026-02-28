@@ -7,3 +7,7 @@ setup-mcp-router:
 
 link-skills:
     @scripts/link-skills.sh
+
+# Sync vendored dependencies via vendir
+vendir-sync:
+    vendir sync

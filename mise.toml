@@ -1,6 +1,7 @@
 [tools]
-just = "1.46.0"
-pipx = "1.8.0"
-"pipx:mcpm" = "2.13.0" 
-node = "24.13.1"
-gum = "0.17.0"
+just            = "1.46.0"
+pipx            = "1.8.0"
+"pipx:mcpm"     = "2.13.0" 
+node            = "24.13.1"
+gum             = "0.17.0"
+vendir          = "0.45.0"
