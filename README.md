@@ -4,37 +4,96 @@
 
 > 我太懶了，所以寫個 AI 幫我活著
 
-Welcome to the **Life Outsourcing Project**. This is a personal AI agent designed to act as your digital twin, specifically engineered for people who find the daily requirements of "being a person" to be a bit much. 
+Welcome to the **Life Outsourcing Project**. Clone is a personal AI agent that creates a digital twin of you — it learns your tone, habits, and social patterns, then takes over your social media presence so you don't have to.
 
-Why live your own life when you can automate it?
+The goal: **fully replace yourself in all online social interactions.**
+
+## How It Works
+
+```
+                ┌──────────────┐
+                │   You (Once) │
+                └──────┬───────┘
+                       │ Login & authorize
+                       ▼
+              ┌────────────────────┐
+              │  Account Connector │
+              │  (OAuth / Cookies) │
+              └────────┬───────────┘
+                       │ Collect history
+                       ▼
+              ┌────────────────────┐
+              │   Local SQLite DB  │
+              │  Posts, comments,  │
+              │  style, schedule   │
+              └────────┬───────────┘
+                       │ Analyze & learn
+                       ▼
+              ┌────────────────────┐
+              │   AI Clone Agent   │
+              │  (Claude Skills)   │
+              └────────┬───────────┘
+                       │ Automate
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+     ┌─────────┐ ┌─────────┐ ┌─────────┐
+     │LinkedIn │ │ Twitter │ │  More   │
+     │  Posts  │ │  Posts  │ │ Socials │
+     └─────────┘ └─────────┘ └─────────┘
+```
+
+### Phase 1 — Connect & Collect
+
+The user logs in to each social media platform. Clone scrapes their historical data — posts, comments, reactions, writing style, posting frequency — and stores everything in a local SQLite database.
+
+### Phase 2 — Learn & Simulate
+
+AI skills analyze the collected data to build a behavioral profile: tone of voice, preferred topics, posting schedule, interaction patterns. Each platform gets a dedicated skill that mimics the user's habits.
+
+### Phase 3 — Automate & Replace
+
+Clone begins posting, replying, and interacting on behalf of the user. Over time it handles all social interactions autonomously — the user only needs to review occasionally (or not at all).
 
 ## Why Clone?
 
 Life is full of high-latency, low-reward tasks. Clone fixes this by automating your existence:
-- **Digital Twin:** Combines your past life experiences into persistent memory so the AI can mimic your specific brand of sarcasm.
-- **Social Ghostwriting:** Integrates with your social accounts to like, post, and pretend you're socially active while you're actually staring at a wall.
-- **Knowledge Shortcuts:** Why read when the AI can summarize everything? Stay "informed" with zero effort.
-- **Everyday Evasion:** Handles the mundane tasks that keep you from your true calling: doing absolutely nothing.
 
-## Project Structure (Optimized for Laziness)
+- **Digital Twin:** Learns your writing style, tone, and personality from historical data.
+- **Social Ghostwriting:** Posts, comments, and interacts across all your social platforms.
+- **Behavioral Mimicry:** Matches your posting frequency, preferred time slots, and topic preferences.
+- **Full Autonomy:** The end goal is zero human intervention — your clone lives your online life for you.
+
+## Architecture
+
+See [`pumls/readme.puml`](pumls/readme.puml) for the full system diagram.
+
+## Project Structure
 
 ```text
-.claude/      # Where the AI's soul (and config) lives
-docs/         # For people who aren't yet too lazy to read
-justfiles/    # Shortcuts for shortcuts
-scripts/      # The "do-it-for-me" automation scripts
-Justfile      # The big 'Easy' button
-mise.toml     # Set up your environment so you don't have to
+.agents/skills/   # AI skills (LinkedIn post manager, etc.)
+.claude/          # Claude configuration and skill symlinks
+apps/persona/     # Next.js dashboard for profile management
+packages/         # Reusable libraries (linkedin-api, etc.)
+scripts/          # Automation scripts
+justfiles/        # Modular just recipes
+Justfile          # Main entry point
+mise.toml         # Tool version management
 ```
 
-## Quick Start (If you can handle 3 steps)
-
-If following these instructions feels like too much work, you might be our target audience:
+## Quick Start
 
 1. Install `mise` (do it once, cry never).
 2. Run `just setup` (one command to rule them all).
 3. Lie down. The AI will take it from here.
 
+## Current Status
+
+| Platform | Connect | Collect | Post | Interact |
+|----------|---------|---------|------|----------|
+| LinkedIn | Done | Done | Done | Planned |
+| Twitter  | Planned | — | — | — |
+| Facebook | Planned | — | — | — |
+
 ## License
 
-MIT (If this AI makes you more successful than me, I’m too lazy to sue you).
+MIT (If this AI makes you more successful than me, I'm too lazy to sue you).
