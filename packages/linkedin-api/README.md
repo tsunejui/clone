@@ -1,7 +1,5 @@
 # linkedin-api
 
-> **WIP**: This package is under active development. APIs may change without notice.
-
 LinkedIn Voyager API client with cookie-based authentication.
 
 ## Installation

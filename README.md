@@ -1,5 +1,7 @@
 # Clone (I'm too lazy to live, so I wrote an AI to do it for me)
 
+> **WIP**: This project is under active development.
+
 > 我太懶了，所以寫個 AI 幫我活著
 
 Welcome to the **Life Outsourcing Project**. This is a personal AI agent designed to act as your digital twin, specifically engineered for people who find the daily requirements of "being a person" to be a bit much. 
