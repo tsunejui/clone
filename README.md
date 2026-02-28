@@ -31,7 +31,7 @@ The goal: **fully replace yourself in all online social interactions.**
                        ▼
               ┌────────────────────┐
               │   AI Clone Agent   │
-              │  (Claude Skills)   │
+              │  (AI Skills)       │
               └────────┬───────────┘
                        │ Automate
           ┌────────────┼────────────┐
