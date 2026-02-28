@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "linkedin-api"
+version = "0.1.0"
+description = "LinkedIn Voyager API client using cookie-based auth"
+requires-python = ">=3.11"
+dependencies = [
+    "curl-cffi>=0.14.0",
+    "pydantic",
+]

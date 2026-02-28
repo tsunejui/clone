@@ -2,6 +2,12 @@
 *.log
 .env
 
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
 # persona app
 apps/persona/node_modules/
 apps/persona/package-lock.json
